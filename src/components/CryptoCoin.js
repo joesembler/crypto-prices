@@ -34,15 +34,26 @@ function CryptoCoin({coin}){
         }
     }
 
+    function formatLastUpdated(date){
+        let lastUpdatedMill = Date.parse(date);
+        let now = new Date;
+        now = Date.parse(now);
+
+        lastUpdatedMill = now - lastUpdatedMill;
+
+        const lastUpdatedMin = lastUpdatedMill / 1000 / 60;
+        return Math.round(lastUpdatedMin);
+    }
+
 
         
     return (
         <div className="CryptoCoin">
-            <svg height="130" width="500">
+            <svg height="150" width="500">
             
                 <rect width="1080" height="1080" fill="#55ceff" />
                 <image href={coin.image} width="100" height="100" x="28" y="15"/>
-                <circle fill="#FEE585" cx="30" cy="30" r="30"/>
+                {/* <circle fill="#FEE585" cx="30" cy="30" r="30"/> */}
                 <text fill="black" fontSize="30" fontFamily="Marker Felt" x="4" y="37">#{coin.market_cap_rank}</text>
                 <text fill="white" fontSize="30" fontFamily="Marker Felt" x="2" y="35">#{coin.market_cap_rank}</text>
                 
@@ -50,8 +61,11 @@ function CryptoCoin({coin}){
                 <text fill="#black"  fontSize="25" fontFamily="Sans-serif" fontWeight="500" x="350" y="50">{currencyFormat(coin.current_price)}</text>
                 <text fill={coin.price_change_percentage_24h > 0 ? "green" : "red"}  fontSize="25" fontFamily="Sans-serif" fontWeight="500" x="350" y="100">{percentageFormat(coin.price_change_percentage_24h)}</text>
                 <text fill="#black"  fontSize="16" fontFamily="Sans-serif" fontWeight="500" x="150" y="100">Market Cap: {marketCapFormat(coin.market_cap)}</text>
+
+                <text fill="#black"  fontSize="16" fontFamily="Sans-serif" fontWeight="500" x="150" y="130">Data as of {formatLastUpdated(coin.last_updated)} minutes ago</text>
+
             </svg>
-            <button>Button</button>
+            {/* <button>Watch</button> */}
         </div>
     )
 }

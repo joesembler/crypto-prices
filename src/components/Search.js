@@ -16,6 +16,7 @@ function Search ({coins, onSearch}){
     return (
         <div className="Search">
         <input
+            id="searchBar"
             type="text"
             placeholder="Search for a crypto!"
             value={querey}

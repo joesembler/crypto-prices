@@ -2,8 +2,8 @@ import React from "react";
 
 function Footer(){
     return(
-        <div id="Footer">
-            
+        <div className="Footer">
+            <p> ©Copyright The Crypto Call, 2021</p>
         </div>
     )
 }

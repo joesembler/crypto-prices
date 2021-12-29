@@ -12,9 +12,10 @@ function CryptoContainer (){
       .then(data => {
         setCoins(data);
       })
+    console.log(coins)
   }, [])
 
-  console.log(coins);
+
 
   function onSearch(results){
     console.log("I was called")
