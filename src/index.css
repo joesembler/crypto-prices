@@ -1,33 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@300;600&display=swap');
 
 *{
     /* background-color: darkslateblue; */
-    background-color: rgb(0, 0, 0);
+    /* background-color: rgb(0, 0, 0); */
 }
 
+body{
+    background-color: black;
+    padding: 0;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
 .Header{
     position: sticky;
     top: 0;
     padding: 15px;
-    background-color: black;
-    padding-top: 12vh;
+    background-color: #212121;
+    padding-top: 8vh;
 }
 
 
 
-.socialMediaLinks{
-    position: fixed;
-    top: 0;
-    margin-left: 90vw;
-}
+
 
 #igLogo{
-    width: 3vw;
+    position: fixed;
+    top: 9.5vh;
+    margin-left: 90vw;
+    width: 2vw;
     height: auto;
 }
 
 #twitterLogo{
-    width: 4vw;
+    position: fixed;
+    margin-left: 93vw;
+    top: 8.75vh;
+    width: 3vw;
     height: auto;
 }
 
@@ -37,32 +47,48 @@
     left: auto;
     right: auto;
     width: auto;
-    height: 12vh;
+    height: 15vh;
 } 
 
 #searchBar{
     position: fixed;
-    top: 6vh;
-    right: 40vw;
+    top: 8.5vh; 
+    right: 12vw;
+    width: 35vw;
+    height: 5vh;
+    box-sizing: border-box;
+    border: none;
+    /* border-color: whitesmoke; */
+    /* border-radius: 10px; */
+    background-color: black;
+    padding: 5px;
 }
+
 
 .Search input {
     text-align: left;
     color: whitesmoke;
     font-size: medium;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Spartan', sans-serif;
 }
 
-/* #igLogo{
-    display: inline-block;
-    margin-left: 50px;
-}  */
-
-.Header h1{
+.pageLinks button{
+    position: relative;
+    top: 0vh;
+    left: 12vw;
+    font-family: 'Spartan', sans-serif;
+    font-size: medium;
     color: whitesmoke;
     text-align: center;
+    padding: 10px;
+    border: none;
+    background-color: #212121;
 }
 
+.pageLinks button:hover{
+    cursor: pointer;
+    color: royalblue;
+}
 .CryptoCoin{
     display: inline-block;
     margin: 20px;
@@ -95,6 +121,39 @@
 .Footer{
     text-align: center;
     color: whitesmoke;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Spartan', sans-serif;
     font-size: medium;
+    font-weight: 600;
+    background-color: black;
+}
+
+.CryptoContainer {
+    background-color: royalblue;
+}
+
+.loading{
+    color: whitesmoke;
+}
+
+#dropdown-basic {
+    width: 10vw;
+    height: 6vh;
+    margin-left: 20vw;
+    margin-top: 5vh;
+}
+
+#dropdown-menu {
+    position: relative;
+    box-sizing: border-box;
+    width: 10vw;
+    height: 9vh;
+    background-color: blueviolet;
+    text-align: center;
+    color: whitesmoke;
+    padding: 10px;
+}
+
+.dropdown-item{
+    display: table-row;
+    margin-left: 3vw;
 }

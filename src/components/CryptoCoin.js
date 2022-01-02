@@ -1,18 +1,30 @@
 import React from "react";
 
 function CryptoCoin({coin}){
+
     function currencyFormat(num) {
-        if(num > .1){
-            return '$' + num.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
-        }
-        else{
+        if(num < .1){
             return '$' + num.toFixed(5);
+        }
+        else if(num == null){
+            return null;
+        }
+        // else if(num > 1000){
+        //     const thousandsPlace = Math.round(num/1000);
+        //     console.log(thousandsPlace)
+        //     return ('$' + thousandsPlace + ',' + (num.toFixed(2) - (thousandsPlace*1000)))
+        // }
+        else{
+            return '$' + num.toFixed(2);
         }
     }
 
     function percentageFormat(num){
         if(num > 0){
             return '+' + num.toFixed(2) + '%';
+        }
+        else if(num == null){
+            return null; 
         }
         else{
             return num.toFixed(2) + '%';
@@ -44,8 +56,6 @@ function CryptoCoin({coin}){
         const lastUpdatedMin = lastUpdatedMill / 1000 / 60;
         return Math.round(lastUpdatedMin);
     }
-
-
         
     return (
         <div className="CryptoCoin">
@@ -58,11 +68,11 @@ function CryptoCoin({coin}){
                 <text fill="white" fontSize="30" fontFamily="Marker Felt" x="2" y="35">#{coin.market_cap_rank}</text>
                 
                 <text fill="white" opacity="0.7" fontSize="50" fontFamily="Marker Felt" x="150" y="60">{coin.name}</text>
-                <text fill="#black"  fontSize="25" fontFamily="Sans-serif" fontWeight="500" x="350" y="50">{currencyFormat(coin.current_price)}</text>
-                <text fill={coin.price_change_percentage_24h > 0 ? "green" : "red"}  fontSize="25" fontFamily="Sans-serif" fontWeight="500" x="350" y="100">{percentageFormat(coin.price_change_percentage_24h)}</text>
+                <text fill="#black"  fontSize="25" fontFamily="Sans-serif" fontWeight="500" x="365" y="90">{currencyFormat(coin.current_price)}</text>
+                <text fill={coin.price_change_percentage_24h > 0 ? "green" : "red"}  fontSize="25" fontFamily="Sans-serif" fontWeight="500" x="365" y="130">{percentageFormat(coin.price_change_percentage_24h)}</text>
                 <text fill="#black"  fontSize="16" fontFamily="Sans-serif" fontWeight="500" x="150" y="100">Market Cap: {marketCapFormat(coin.market_cap)}</text>
 
-                <text fill="#black"  fontSize="16" fontFamily="Sans-serif" fontWeight="500" x="150" y="130">Data as of {formatLastUpdated(coin.last_updated)} minutes ago</text>
+                <text fill="#black"  fontSize="16" fontFamily="Sans-serif" fontWeight="500" x="150" y="130">Data as of {formatLastUpdated(coin.last_updated)} minute{formatLastUpdated(coin.last_updated) !== 1 ? 's' : ''} ago</text>
 
             </svg>
             {/* <button>Watch</button> */}

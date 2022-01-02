@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import CryptoList from "./CryptoList";
 
 function Search ({coins, onSearch}){
     const [querey, quereySetter] = useState("");
@@ -8,7 +7,7 @@ function Search ({coins, onSearch}){
     useEffect(() => {
         const filteredCoins = coins.filter(coin => coin.name.toLowerCase().includes(querey)).map(coin => coin)
         setResults(filteredCoins);
-        console.log(results);
+        onSearch(results);
     }, [querey])
   
     
@@ -26,7 +25,6 @@ function Search ({coins, onSearch}){
                 onSearch(results);
             }}
         />
-        <CryptoList coins={results} />
         </div>
     );
 }
