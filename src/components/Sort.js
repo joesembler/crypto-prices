@@ -4,6 +4,7 @@ import React, {useState, useEffect} from "react";
 
 function Sort(props){
     const [sortType, setSortType] = useState('name');
+    const [ascending, setAscending] = useState(false);
     console.log(props)
     
     useEffect(() => {
@@ -18,14 +19,34 @@ function Sort(props){
           // console.log(newCoins)
           if(props.coins.length > 0){
             console.log('I was called')
-            const sorted = [...props.coins].sort((a, b) => b[sortProperty] - a[sortProperty]);
+            const sorted = [...props.coins].sort((a, b) => {
+              if(a[sortProperty] > b[sortProperty]){
+                if(ascending){
+                  return -1;
+                }
+                else{
+                  return 1;
+                }
+              }
+              else if(a[sortProperty] < b[sortProperty]){
+                if(ascending){
+                  return 1;
+                }
+                else{
+                  return -1;
+                }
+              }
+              
+              // b[sortProperty] - a[sortProperty])
+            })
+            
             props.setDisplayCoins(sorted);
-          };
+          }
           
           }
           
         sortArray(sortType);
-      }, [sortType]);
+      }, [sortType, ascending]);
 
 
     // if(coins.length > 0){
@@ -62,6 +83,7 @@ function Sort(props){
                 <option value="price_change_24h">Percent Change</option>
                 <option value="market_cap">Market Cap</option>
             </select>
+            <button onClick={() => {setAscending(!ascending)}}>{ascending ? "Descending" : "Ascending"}</button>
         </div>
         
     )

@@ -9,7 +9,7 @@ function CryptoContainer (){
     
   useEffect(() => {
     console.log('I was called')
-    fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=falsekets`)
+    fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=falsekets`)
       .then(r => r.json())
       .then(data => {
         setCoins(data);
@@ -47,8 +47,9 @@ function CryptoContainer (){
     return (
       <div className="CryptoContainer">
         
-        <Sort coins={displayCoins.length > 0 ? displayCoins : coins} setDisplayCoins={onSearch} />
+        
         <Search coins={coins} onSearch={onSearch} />
+        <Sort coins={displayCoins.length > 0 ? displayCoins : coins} setDisplayCoins={onSearch} />
         <CryptoList coins={displayCoins.length > 0 ? displayCoins : coins} />
       </div>
     );
