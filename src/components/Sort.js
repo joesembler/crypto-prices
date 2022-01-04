@@ -1,11 +1,9 @@
 import React, {useState, useEffect} from "react";
 
 
-
 function Sort(props){
     const [sortType, setSortType] = useState('market_cap');
     const [ascending, setAscending] = useState(true);
-    console.log(props)
     
     useEffect(() => {
         const sortArray = type => {
@@ -16,15 +14,13 @@ function Sort(props){
             market_cap: 'market_cap'
           };
           const sortProperty = types[type];
-          // console.log(newCoins)
           if(props.coins.length > 0){
-            console.log('I was called')
             const sorted = [...props.coins].sort((a, b) => {
               if(a[sortProperty] > b[sortProperty]){
                 if(ascending){
                   return -1;
                 }
-                else{
+                else if(!ascending){
                   return 1;
                 }
               }
@@ -32,59 +28,50 @@ function Sort(props){
                 if(ascending){
                   return 1;
                 }
-                else{
+                else if(!ascending){
                   return -1;
                 }
+              else if(a[sortProperty] === b[sortProperty]){
+                return 0;
+              }
               }
               
-              // b[sortProperty] - a[sortProperty])
-            })
+             
+          })
             
             props.setDisplayCoins(sorted);
           }
-          
-          }
-          
+      }
         sortArray(sortType);
       }, [sortType, ascending]);
 
-
-    // if(coins.length > 0){
-    //     const sortedCoins = coins.sort((a, b) => {
-    //         if(a.current_price < b.current_price){
-    //             return -1;
-    //         }   
-    //         if(a.current_price > b.current_price){
-    //             return 1;
-    //         } 
-    //         else{
-    //             return 0;
-    //         }
-    //    })
-    //    .map((coin) => coin);
-    //    console.log(sortedCoins)
-    // }
-    
-    
-    // console.log(coins);
-
-
-  
-
-
-
     return(
         <div className="Sort">
-            <label for="Sort By: ">Sort By: </label>
+            <label for="selectSort">Sort By: </label>
             
             <select onChange={(e) => setSortType(e.target.value)}>
               <option value="market_cap">Market Cap</option>
-                <option value="name">Alphabetical</option>
-                <option value="current_price">Price</option>
-                <option value="price_change_24h">Percent Change</option>
-                
+              <option value="name">Alphabetical</option>
+              <option value="current_price">Price</option>
+              <option value="price_change_24h">Percent Change</option>
             </select>
             <button onClick={() => {setAscending(!ascending)}}>{ascending ? "Descending" : "Ascending"}</button>
+
+
+            <label for="selectCurrency">Select Currency </label>
+            <select onChange={(e) => props.onCurrencyChange(e.target.value)}>
+              <option value="usd">USD</option>
+              <option value="eur">EUR</option>
+              <option value="jpy">JPY</option>
+            </select>
+
+            <label for="selectDisplay">Display Crypto Per Page </label>
+            <select onChange={(e) => props.onPerPageChange(e.target.value)}>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="100">100</option>
+              <option value="250">250</option>
+            </select>
         </div>
         
     )

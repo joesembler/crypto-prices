@@ -1,21 +1,26 @@
 import React from "react";
 
-function CryptoCoin({coin}){
+function CryptoCoin(props){
+    let symbol;
+    if(props.currency === "usd"){
+        symbol = '$';
+    }
+    else if(props.currency === "eur"){
+        symbol = '€';
+    }
+    else{
+        symbol = '¥';
+    }
 
     function currencyFormat(num) {
         if(num < .1){
-            return '$' + num.toFixed(5);
+            return symbol + num.toFixed(5);
         }
         else if(num == null){
             return null;
         }
-        // else if(num > 1000){
-        //     const thousandsPlace = Math.round(num/1000);
-        //     console.log(thousandsPlace)
-        //     return ('$' + thousandsPlace + ',' + (num.toFixed(2) - (thousandsPlace*1000)))
-        // }
         else{
-            return '$' + num.toFixed(2);
+            return symbol + num.toFixed(2);
         }
     }
 
@@ -34,15 +39,15 @@ function CryptoCoin({coin}){
     function marketCapFormat(num){
         if(num > 1000000000000){
             const newNum = num /1000000000000;
-            return ('$' + newNum.toFixed(1) + "  trillion");
+            return (symbol + newNum.toFixed(1) + "  trillion");
         }
         else if(num > 1000000000){
             const newNum = num / 1000000000
-            return ('$' + newNum.toFixed(1) + "  billion");
+            return (symbol + newNum.toFixed(1) + "  billion");
         }
         else if(num > 1000000){
             const newNum = num / 1000000;
-            return ('$' + newNum.toFixed(1) + "  million");
+            return (symbol + newNum.toFixed(1) + "  million");
         }
     }
 
@@ -62,19 +67,19 @@ function CryptoCoin({coin}){
             <svg height="150" width="500">
             
                 <rect width="1080" height="1080" fill="#ffff59" />
-                <image href={coin.image} width="100" height="100" x="28" y="15"/>
+                <image href={props.coin.image} width="100" height="100" x="28" y="15"/>
                 {/* <circle fill="#FEE585" cx="30" cy="30" r="30"/> */}
-                <text fill="black" fontSize="30" fontFamily="Marker Felt" x="4" y="37">#{coin.market_cap_rank}</text>
-                <text fill="white" fontSize="30" fontFamily="Marker Felt" x="2" y="35">#{coin.market_cap_rank}</text>
+                <text fill="black" fontSize="30" fontFamily="Marker Felt" x="4" y="37">#{props.coin.market_cap_rank}</text>
+                <text fill="white" fontSize="30" fontFamily="Marker Felt" x="2" y="35">#{props.coin.market_cap_rank}</text>
                 
-                <text fill="black" opacity="0.95" fontSize="50" fontFamily="Marker Felt" x="150" y="60">{coin.name}</text>
-                <text fill="#black"  fontSize="25" fontFamily="Sans-serif" fontWeight="500" x="365" y="90">{currencyFormat(coin.current_price)}</text>
-                <text fill={coin.price_change_percentage_24h > 0 ? "green" : "red"}  fontSize="25" fontFamily="Sans-serif" fontWeight="500" x="365" y="130">{percentageFormat(coin.price_change_percentage_24h)}</text>
-                <text fill="#black"  fontSize="16" fontFamily="Sans-serif" fontWeight="500" x="150" y="100">Market Cap: {marketCapFormat(coin.market_cap)}</text>
+                <text fill="black" opacity="0.95" fontSize="50" fontFamily="Marker Felt" x="150" y="60">{props.coin.name}</text>
+                <text fill="#black"  fontSize="25" fontFamily="Sans-serif" fontWeight="500" x="365" y="90">{currencyFormat(props.coin.current_price)}</text>
+                <text fill={props.coin.price_change_percentage_24h > 0 ? "green" : "red"}  fontSize="25" fontFamily="Sans-serif" fontWeight="500" x="365" y="130">{percentageFormat(props.coin.price_change_percentage_24h)}</text>
+                <text fill="#black"  fontSize="16" fontFamily="Sans-serif" fontWeight="500" x="150" y="100">Market Cap: {marketCapFormat(props.coin.market_cap)}</text>
 
-                <text fill="#black"  fontSize="16" fontFamily="Sans-serif" fontWeight="500" x="150" y="130">Data as of {formatLastUpdated(coin.last_updated)} minute{formatLastUpdated(coin.last_updated) !== 1 ? 's' : ''} ago</text>
+                <text fill="#black"  fontSize="16" fontFamily="Sans-serif" fontWeight="500" x="150" y="130">Data as of {formatLastUpdated(props.coin.last_updated)} minute{formatLastUpdated(props.coin.last_updated) !== 1 ? 's' : ''} ago</text>
 
-            </svg>
+            </svg>  
             {/* <button>Watch</button> */}
         </div>
     )

@@ -6,35 +6,33 @@ import Sort from "./Sort"
 function CryptoContainer (){
   const [coins, setCoins] = useState([]);
   const [displayCoins, setDisplayCoins] = useState([]);
+  const [currency, setCurrency] = useState("usd");
+  const [perPage, setPerPage] = useState("25");
     
   useEffect(() => {
     console.log('I was called')
-    fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&sparkline=falsekets`)
+    fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=${perPage}&page=1&sparkline=falsekets`)
       .then(r => r.json())
       .then(data => {
         setCoins(data);
+        setDisplayCoins(data);
       })
-  }, [])
-
-
+  }, [currency, perPage])
 
   function onSearch(results){
-    console.log("i was called ")
     setDisplayCoins(results);
   }
 
-  // const loading = setInterval(() => {
-  //   return (
-  //     <div className="loading">
-  //       <h2>
-  //         Loading... 
-  //       </h2>
-  //     </div>
-  //   )
-  // }, 1500)
+  function onCurrencyChange(currency){
+    setCurrency(currency);
+  }
+
+  function onPerPageChange(perPage){
+    setPerPage(perPage);
+  }
+ 
 
   if(coins.length === 0){
-    // return {loading};
     return (
       <div className="loading">
         <h2>
@@ -49,8 +47,8 @@ function CryptoContainer (){
         
         
         <Search coins={coins} onSearch={onSearch} />
-        <Sort coins={displayCoins.length > 0 ? displayCoins : coins} setDisplayCoins={onSearch} />
-        <CryptoList coins={displayCoins.length > 0 ? displayCoins : coins} />
+        <Sort coins={displayCoins.length > 0 ? displayCoins : coins} setDisplayCoins={onSearch} onCurrencyChange={onCurrencyChange} onPerPageChange={onPerPageChange}/>
+        <CryptoList coins={displayCoins.length > 0 ? displayCoins : coins} currency={currency}/>
       </div>
     );
   }

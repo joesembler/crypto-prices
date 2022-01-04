@@ -1,9 +1,8 @@
 import React from "react";
 import CryptoCoin from "./CryptoCoin";
 
-function CryptoList({coins}){
-    const cryptoElements = coins.map((coin) => <CryptoCoin key={coins.id} coin={coin} />);
-    // console.log(coins);
+function CryptoList({coins, currency}){
+    const cryptoElements = coins.map((coin) => <CryptoCoin key={coin.id} coin={coin} currency={currency}/>);
     return (
         <div className="crypto-list">
             {cryptoElements};
