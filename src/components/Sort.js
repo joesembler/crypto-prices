@@ -3,8 +3,8 @@ import React, {useState, useEffect} from "react";
 
 
 function Sort(props){
-    const [sortType, setSortType] = useState('name');
-    const [ascending, setAscending] = useState(false);
+    const [sortType, setSortType] = useState('market_cap');
+    const [ascending, setAscending] = useState(true);
     console.log(props)
     
     useEffect(() => {
@@ -78,10 +78,11 @@ function Sort(props){
             <label for="Sort By: ">Sort By: </label>
             
             <select onChange={(e) => setSortType(e.target.value)}>
+              <option value="market_cap">Market Cap</option>
                 <option value="name">Alphabetical</option>
                 <option value="current_price">Price</option>
                 <option value="price_change_24h">Percent Change</option>
-                <option value="market_cap">Market Cap</option>
+                
             </select>
             <button onClick={() => {setAscending(!ascending)}}>{ascending ? "Descending" : "Ascending"}</button>
         </div>
