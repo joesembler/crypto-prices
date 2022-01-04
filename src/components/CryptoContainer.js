@@ -19,6 +19,7 @@ function CryptoContainer (){
 
 
   function onSearch(results){
+    console.log("i was called ")
     setDisplayCoins(results);
   }
 
@@ -32,7 +33,7 @@ function CryptoContainer (){
   //   )
   // }, 1500)
 
-  if(coins.length == 0){
+  if(coins.length === 0){
     // return {loading};
     return (
       <div className="loading">
@@ -45,8 +46,9 @@ function CryptoContainer (){
   else{
     return (
       <div className="CryptoContainer">
+        
+        <Sort coins={displayCoins.length > 0 ? displayCoins : coins} setDisplayCoins={onSearch} />
         <Search coins={coins} onSearch={onSearch} />
-        <Sort coins={displayCoins.length > 0 ? displayCoins : coins} />
         <CryptoList coins={displayCoins.length > 0 ? displayCoins : coins} />
       </div>
     );

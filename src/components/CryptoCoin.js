@@ -48,7 +48,7 @@ function CryptoCoin({coin}){
 
     function formatLastUpdated(date){
         let lastUpdatedMill = Date.parse(date);
-        let now = new Date;
+        let now = new Date();
         now = Date.parse(now);
 
         lastUpdatedMill = now - lastUpdatedMill;

@@ -134,7 +134,12 @@ body{
 .loading{
     color: whitesmoke;
 }
+.Sort {
+    font-family: 'Spartan', sans-serif;
+    margin-left: 5vw;
 
+
+}
 #dropdown-basic {
     width: 10vw;
     height: 6vh;
