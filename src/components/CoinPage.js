@@ -12,10 +12,7 @@ function CoinPage(){
             .then(r=>r.json())
             .then(data=> {
                 setCoin(data);
-                console.log(data)
             })
-    console.log(params)
-
     }, [params]);
 
 
@@ -95,7 +92,7 @@ function CoinPage(){
             )
         }
     else{
-        return (<div><h2>Loading</h2></div>)
+        return (<div className="emptyCryptoPage">{null}</div>)
     }
         
     

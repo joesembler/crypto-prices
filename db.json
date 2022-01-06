@@ -1,0 +1,25 @@
+{
+  "watchList": [
+    {
+      "id": "bitcoin"
+    },
+    {
+      "id": "ethereum"
+    },
+    {
+      "id": "binancecoin"
+    },
+    {
+      "id": "tether"
+    },
+    {
+      "id": "usd-coin"
+    },
+    {
+      "id": "polkadot"
+    },
+    {
+      "id": "chainlink"
+    }
+  ]
+}

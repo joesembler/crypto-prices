@@ -82,7 +82,8 @@ function CryptoCoin(props){
                 <text fill="#black"  fontSize="16" fontFamily="Sans-serif" fontWeight="500" x="150" y="130">Data as of {formatLastUpdated(props.coin.last_updated)} minute{formatLastUpdated(props.coin.last_updated) !== 1 ? 's' : ''} ago</text>
 
             </svg>  
-        <Link to={props.coin.id} >View More Information</Link>
+        <button id={props.coin.id} onClick={(event) => {props.handleClick(event)}}>Add to Watch List</button>
+        <Link to={props.coin.id} ><button>View More Information</button></Link>
         </div>
     )
 }

@@ -17,8 +17,7 @@ function Header (){
             </div>
             <div className="pageLinks">
                 <Link id="homeButton" to='/'><button id="homeButton">Home</button></Link>
-                <button id="aboutButton"href="#about">About Us</button>
-                <button id="contactButton"href="#contact">Contact</button>
+                <Link id="watchListButton" to='/watchlist'><button id="watchListButton">Watchlist</button></Link>
             </div>   
             
         </div>
