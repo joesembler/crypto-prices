@@ -66,17 +66,14 @@ function CryptoContainer (){
         <Route exact path="/:id">
           <CoinPage />
         </Route>
-
         <Route exact path='/watchlist'>
           <WatchList currency={currency} />
         </Route>
-        
         <Route exact path="/">
           <Search coins={coins} onSearch={onSearch} />
           <Sort coins={displayCoins.length > 0 ? displayCoins : coins} setDisplayCoins={onSearch} onCurrencyChange={onCurrencyChange} onPerPageChange={onPerPageChange}/>
           <CryptoList coins={displayCoins.length > 0 ? displayCoins : coins} currency={currency} handleClick={handleClick}/>
         </Route>
-        
       </div>
     );
   }
