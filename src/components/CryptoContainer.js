@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from "react";
+import { Route } from 'react-router-dom'
 import Search from "./Search";
 import CryptoList from "./CryptoList";
-import Sort from "./Sort"
+import Sort from "./Sort";
+import CoinPage from './CoinPage'
 
 function CryptoContainer (){
   const [coins, setCoins] = useState([]);
@@ -44,11 +46,18 @@ function CryptoContainer (){
   else{
     return (
       <div className="CryptoContainer">
+
+
+        <Route path="/:id">
+          <CoinPage />
+        </Route>
         
+        <Route exact path="/">
+          <Search coins={coins} onSearch={onSearch} />
+          <Sort coins={displayCoins.length > 0 ? displayCoins : coins} setDisplayCoins={onSearch} onCurrencyChange={onCurrencyChange} onPerPageChange={onPerPageChange}/>
+          <CryptoList coins={displayCoins.length > 0 ? displayCoins : coins} currency={currency}/>
+        </Route>
         
-        <Search coins={coins} onSearch={onSearch} />
-        <Sort coins={displayCoins.length > 0 ? displayCoins : coins} setDisplayCoins={onSearch} onCurrencyChange={onCurrencyChange} onPerPageChange={onPerPageChange}/>
-        <CryptoList coins={displayCoins.length > 0 ? displayCoins : coins} currency={currency}/>
       </div>
     );
   }

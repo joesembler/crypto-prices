@@ -1,6 +1,8 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 function CryptoCoin(props){
+
     let symbol;
     if(props.currency === "usd"){
         symbol = '$';
@@ -80,7 +82,7 @@ function CryptoCoin(props){
                 <text fill="#black"  fontSize="16" fontFamily="Sans-serif" fontWeight="500" x="150" y="130">Data as of {formatLastUpdated(props.coin.last_updated)} minute{formatLastUpdated(props.coin.last_updated) !== 1 ? 's' : ''} ago</text>
 
             </svg>  
-            {/* <button>Watch</button> */}
+        <Link to={props.coin.id} >View More Information</Link>
         </div>
     )
 }
