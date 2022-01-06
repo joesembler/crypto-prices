@@ -21,6 +21,7 @@ function Search ({coins, onSearch}){
             value={querey}
             onChange={(e) => quereySetter(e.target.value)}
             onSubmit={(e) => {
+                
                 e.preventDefault();
                 onSearch(results);
             }}

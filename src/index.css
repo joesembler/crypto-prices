@@ -30,10 +30,6 @@ body{
     z-index: 8;
 }
 
-
-
-
-
 #igLogo{
     position: fixed;
     top: 9.5vh;
@@ -61,6 +57,7 @@ body{
 
 #searchBar{
     position: fixed;
+    z-index:9;
     top: 8.5vh; 
     right: 12vw;
     width: 35vw;
@@ -178,3 +175,54 @@ body{
     display: table-row;
     margin-left: 3vw;
 }
+
+.CoinPageHeaders{
+    font-family: 'Spartan', sans-serif;
+    font-size: large;
+}
+
+.CoinPage h1, h2{
+    position: relative;
+    display: block;
+    text-align: center;
+    padding-top: 4vh;
+}
+
+
+
+#CoinPageMarketCapRank{
+    position: relative;
+    top: -18vh;
+    padding-top: .0vh;
+    padding-right: 13vw;
+    left: 0vw;
+    text-align: right;
+}
+
+#CoinPageMarketCap{
+    position: relative;
+    top: -12vh;
+    padding-top: .0vh;
+    padding-right: 13vw;
+    text-align: right;
+}
+
+.description{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75vw;
+    padding: 3vw;
+    font-family: 'Spartan', sans-serif;
+    font-size: medium;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+#CoinPageImage{
+    position: absolute;
+    width: 15vw;
+    padding-top: 2vh;
+    padding-left: 2vw;
+    height: auto;
+}
+

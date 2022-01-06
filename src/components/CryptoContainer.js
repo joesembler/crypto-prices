@@ -77,7 +77,6 @@ function CryptoContainer (){
       </div>
     );
   }
- 
 }
 
 export default CryptoContainer;
